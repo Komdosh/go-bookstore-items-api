@@ -1,0 +1,55 @@
+### *ES Settings* ###
+
+### Create index
+PUT http://127.0.0.1:9200/items
+Content-Type: application/json
+
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 2,
+      "number_of_replicas": 2
+    }
+  }
+}
+
+### Check index
+GET http://127.0.0.1:9200/items
+Content-Type: application/json
+
+### *API* ###
+
+### Create item
+POST http://localhost:8000/items?access_token=31e31d2fdd27b81ac7e8ad525a5bb0c35824af0c
+Content-Type: application/json
+
+{
+  "title": "Best practices",
+  "description": {
+    "plainText": "Super powerful guide",
+    "html": "<p>Super powerful guide<p>"
+  },
+  "pictures": [
+    {
+      "url": "http://127.0.0.1:9000/pic.png"
+    }
+  ],
+  "video": "http://127.0.0.1:9000/video.mp4",
+  "price": 100.0,
+  "available_quantity": 1000,
+  "sold_quantity": 500,
+  "status": "active"
+}
+
+### Get items
+POST http://localhost:8000/items/search
+Content-Type: application/json
+
+{
+  "equals": [
+    {
+      "field": "title",
+      "value": "Best practices"
+    }
+  ]
+}

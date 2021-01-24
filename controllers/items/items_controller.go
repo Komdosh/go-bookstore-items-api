@@ -81,7 +81,7 @@ func (cont *itemsController) Get(w http.ResponseWriter, r *http.Request) {
 	http_utils.RespondJson(w, http.StatusOK, item)
 }
 
-func (c *itemsController) Search(w http.ResponseWriter, r *http.Request) {
+func (cont *itemsController) Search(w http.ResponseWriter, r *http.Request) {
 	bytes, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		apiErr := rest_errors.NewBadRequestError("invalid json body")
