@@ -20,13 +20,13 @@ Content-Type: application/json
 ### *API* ###
 
 ### Create item
-POST http://localhost:8000/items?access_token=31e31d2fdd27b81ac7e8ad525a5bb0c35824af0c
+POST http://127.0.0.1:8000/items?access_token=31e31d2fdd27b81ac7e8ad525a5bb0c35824af0c
 Content-Type: application/json
 
 {
   "title": "Best practices",
   "description": {
-    "plainText": "Super powerful guide",
+    "plain_text": "Super powerful guide",
     "html": "<p>Super powerful guide<p>"
   },
   "pictures": [
@@ -42,14 +42,38 @@ Content-Type: application/json
 }
 
 ### Get items
-POST http://localhost:8000/items/search
+POST http://127.0.0.1:8000/items/search
 Content-Type: application/json
 
 {
+  "not_equals": [
+    {
+      "field": "status",
+      "value": "inactive"
+    }
+  ],
   "equals": [
     {
-      "field": "title",
-      "value": "Best practices"
+      "field": "available_quantity",
+      "value": 1000
     }
   ]
 }
+
+### Get items by id
+
+GET http://127.0.0.1:8000/items/FjxbPXcBpwkRtvVMlq1U
+Content-Type: application/json
+
+### Patch item
+PATCH http://127.0.0.1:8000/items/FjxbPXcBpwkRtvVMlq1U?access_token=31e31d2fdd27b81ac7e8ad525a5bb0c35824af0c
+Content-Type: application/json
+
+{
+  "id": "FjxbPXcBpwkRtvVMlq1U",
+  "title": "Best practices ver 2.0"
+}
+
+### Delete item
+DELETE http://127.0.0.1:8000/items/7C35MncBiikUn6nE-UQ9?access_token=31e31d2fdd27b81ac7e8ad525a5bb0c35824af0c
+Content-Type: application/json

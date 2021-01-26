@@ -68,3 +68,26 @@ func (i *Item) Search(query queries.EsQuery) ([]Item, rest_errors.RestErr) {
 	}
 	return items, nil
 }
+
+func (i *Item) Delete() rest_errors.RestErr {
+	itemId := i.Id
+	_, err := elasticsearch.Client.Delete(indexItems, typeItem, i.Id)
+	if err != nil {
+		if strings.Contains(err.Error(), "404") {
+			return rest_errors.NewNotFoundError(fmt.Sprintf("no item found with id %s", i.Id))
+		}
+		return rest_errors.NewInternalServerError(fmt.Sprintf("error when trying to get id %s", i.Id), errors.New("database error"))
+	}
+
+	i.Id = itemId
+	return nil
+}
+
+func (i *Item) Update() rest_errors.RestErr {
+	result, err := elasticsearch.Client.Update(indexItems, typeItem, i.Id, i)
+	if err != nil {
+		return rest_errors.NewInternalServerError("error when trying to update item", errors.New("database error"))
+	}
+	i.Id = result.Id
+	return nil
+}

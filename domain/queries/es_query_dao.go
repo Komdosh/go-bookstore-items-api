@@ -9,5 +9,10 @@ func (q EsQuery) Build() elastic.Query {
 		equalsQueries = append(equalsQueries, elastic.NewMatchQuery(eq.Field, eq.Value))
 	}
 	query.Must(equalsQueries...)
+	notEqualsQueries := make([]elastic.Query, 0)
+	for _, neq := range q.NotEquals {
+		notEqualsQueries = append(notEqualsQueries, elastic.NewMatchQuery(neq.Field, neq.Value))
+	}
+	query.MustNot(notEqualsQueries...)
 	return query
 }
