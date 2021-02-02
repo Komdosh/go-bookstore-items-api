@@ -77,3 +77,9 @@ Content-Type: application/json
 ### Delete item
 DELETE http://127.0.0.1:8000/items/7C35MncBiikUn6nE-UQ9?access_token=31e31d2fdd27b81ac7e8ad525a5bb0c35824af0c
 Content-Type: application/json
+
+
+### Get items by id
+
+GET http://127.0.0.1:8000/health
+Content-Type: application/json

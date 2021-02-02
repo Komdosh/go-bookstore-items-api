@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/Komdosh/go-bookstore-items-api/clients/elasticsearch"
+	"github.com/Komdosh/go-bookstore-items-api/src/clients/elasticsearch"
 	"github.com/Komdosh/go-bookstore-utils/logger"
 	"github.com/gorilla/mux"
 	"net/http"
@@ -18,8 +18,7 @@ func StartApplication() {
 	mapUrls()
 
 	srv := &http.Server{
-		Addr: "127.0.0.1:8000",
-		// Good practice to set timeouts to avoid Slowloris attacks.
+		Addr:         "127.0.0.1:8000",
 		WriteTimeout: 500 * time.Millisecond,
 		ReadTimeout:  2 * time.Second,
 		IdleTimeout:  60 * time.Second,

@@ -1,6 +1,7 @@
 package health
 
 import (
+	"github.com/Komdosh/go-bookstore-utils/logger"
 	"net/http"
 )
 
@@ -21,4 +22,5 @@ type healthController struct{}
 func (c *healthController) Health(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(health))
+	logger.Info("Health...")
 }

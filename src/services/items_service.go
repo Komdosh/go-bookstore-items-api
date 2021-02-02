@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/Komdosh/go-bookstore-items-api/domain/items"
-	"github.com/Komdosh/go-bookstore-items-api/domain/queries"
+	"github.com/Komdosh/go-bookstore-items-api/src/domain/items"
+	"github.com/Komdosh/go-bookstore-items-api/src/domain/queries"
 	"github.com/Komdosh/go-bookstore-utils/rest_errors"
 )
 

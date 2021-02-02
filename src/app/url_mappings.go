@@ -1,13 +1,13 @@
 package app
 
 import (
-	"github.com/Komdosh/go-bookstore-items-api/controllers/health"
-	"github.com/Komdosh/go-bookstore-items-api/controllers/items"
+	"github.com/Komdosh/go-bookstore-items-api/src/controllers/health"
+	"github.com/Komdosh/go-bookstore-items-api/src/controllers/items"
 	"net/http"
 )
 
 func mapUrls() {
-	router.HandleFunc("/ping", health.HealthController.Health).Methods(http.MethodGet)
+	router.HandleFunc("/health", health.HealthController.Health).Methods(http.MethodGet)
 
 	router.HandleFunc("/items", items.ItemsController.Create).Methods(http.MethodPost)
 	router.HandleFunc("/items/{id}", items.ItemsController.Get).Methods(http.MethodGet)

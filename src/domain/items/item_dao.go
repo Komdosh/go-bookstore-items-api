@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/Komdosh/go-bookstore-items-api/clients/elasticsearch"
-	"github.com/Komdosh/go-bookstore-items-api/domain/queries"
+	"github.com/Komdosh/go-bookstore-items-api/src/clients/elasticsearch"
+	"github.com/Komdosh/go-bookstore-items-api/src/domain/queries"
 	"github.com/Komdosh/go-bookstore-utils/rest_errors"
 	"strings"
 )
